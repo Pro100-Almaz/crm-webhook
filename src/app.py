@@ -8,8 +8,8 @@ from src.routers.users import router as user_router
 models.Base.metadata.create_all(bind=engine)
 
 origins = [
-        "http://localhost:3000",
-        "http://localhost:3000/?",   
+    "http://localhost:8000",
+    "http://localhost:3000",
 ]
 
 if (settings.debugging):
@@ -18,7 +18,7 @@ else:
     app = FastAPI(port=5000)
 
 
-@app.get("/healthcheck", include_in_schema=False)
+@app.get("/health-check", include_in_schema=False)
 async def healthcheck() -> dict[str, str]:
     return {"status": "ok"}
 
