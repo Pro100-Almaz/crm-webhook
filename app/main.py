@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routers.webhook import router as webhook_router
+from app.helpers.database import database
 
 
 origins = [
@@ -29,3 +30,15 @@ app.add_middleware(
 )
 
 app.include_router(webhook_router)
+
+@app.on_event("startup")
+async def startup():
+    await database.connect()
+
+    # app.state.rabbit_connection = await aio_pika.connect_robust(RABBITMQ_URL)
+    # app.state.rabbit_channel = await app.state.rabbit_connection.channel()
+    # await app.state.rabbit_channel.declare_queue("my_queue", durable=True)
+
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()

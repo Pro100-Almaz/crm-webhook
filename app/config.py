@@ -1,4 +1,5 @@
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
+
 
 class Settings(BaseSettings):
     WEBHOOK_POSTGRES_SERVER: str
@@ -27,7 +28,6 @@ class Settings(BaseSettings):
 
 
     class Config:
-        # env_file = "./.env"
-        env_file = "../.env"
+        env_file = ".env"
 
 settings = Settings()

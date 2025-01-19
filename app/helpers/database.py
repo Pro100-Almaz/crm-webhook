@@ -10,11 +10,11 @@ class Database:
 
     async def connect(self):
         self._pool = await asyncpg.create_pool(
-            host=settings.POSTGRES_SERVER,
-            port=settings.POSTGRES_PORT,
-            database=settings.POSTGRES_DB,
-            user=settings.POSTGRES_USER,
-            password=settings.POSTGRES_PASSWORD,
+            host=settings.WEBHOOK_POSTGRES_SERVER,
+            port=settings.WEBHOOK_POSTGRES_PORT,
+            database=settings.WEBHOOK_POSTGRES_DB,
+            user=settings.WEBHOOK_POSTGRES_USER,
+            password=settings.WEBHOOK_POSTGRES_PASSWORD,
             min_size=1, max_size=10, timeout=60)
 
     async def disconnect(self):
