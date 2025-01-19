@@ -1,11 +1,11 @@
 from pydantic import BaseSettings
 
 class Settings(BaseSettings):
-    database_hostname: str = 'dbhostname'
-    database_port: int = 5432
-    database_password: str = 'dbpassword'
-    database_name: str = 'dbname'
-    database_username: str = 'dbuser'
+    WEBHOOK_POSTGRES_SERVER: str
+    WEBHOOK_POSTGRES_PORT: int
+    WEBHOOK_POSTGRES_PASSWORD: str
+    WEBHOOK_POSTGRES_DB: str
+    WEBHOOK_POSTGRES_USER: str
 
     github_secret_key: str = None
     github_client_id: str = None

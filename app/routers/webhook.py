@@ -4,7 +4,7 @@ from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from typing import List
 
-import src.schemas as schemas
+import app. as schemas
 import src.models as models
 from src.helpers.database import get_db
 from src.helpers.utils import hash, verify

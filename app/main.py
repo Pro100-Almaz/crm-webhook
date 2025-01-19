@@ -1,11 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.config import settings
-from src import models
-from src.helpers.database import engine
-from src.routers.users import router as user_router
 
-models.Base.metadata.create_all(bind=engine)
+from app.config import settings
+from app.routers.webhook import router as webhook_router
+
 
 origins = [
     "http://localhost:8000",
@@ -13,9 +11,9 @@ origins = [
 ]
 
 if (settings.debugging):
-    app = FastAPI(debug=True, reload=True, port=5000)
+    app = FastAPI(debug=True, reload=True, port=8001)
 else:
-    app = FastAPI(port=5000)
+    app = FastAPI(port=8001)
 
 
 @app.get("/health-check", include_in_schema=False)
@@ -30,4 +28,4 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-app.include_router(user_router)
+app.include_router(webhook_router)
