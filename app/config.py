@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     WEBHOOK_POSTGRES_DB: str
     WEBHOOK_POSTGRES_USER: str
 
+    BOT_TOKEN: str
+
     github_secret_key: str = None
     github_client_id: str = None
     github_is_active: bool = False

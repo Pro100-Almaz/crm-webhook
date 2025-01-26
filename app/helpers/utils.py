@@ -7,3 +7,6 @@ def hash(password: str):
 
 def verify(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
+
+async def save_new_client(client: dict) -> bool:
+    return True
